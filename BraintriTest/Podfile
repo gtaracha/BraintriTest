@@ -1,0 +1,12 @@
+
+platform :ios, '9.0'
+xcodeproj 'BraintriTest.xcodeproj'
+
+target 'BraintriTest' do
+use_frameworks!
+
+pod 'PureLayout'
+pod 'Siesta', '~> 1.0'
+pod 'Siesta/Alamofire', '~> 1.0'
+
+end
