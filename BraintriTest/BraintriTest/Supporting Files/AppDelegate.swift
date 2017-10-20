@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        setupRootViewController()
         return true
     }
 
@@ -41,6 +42,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    private func setupRootViewController() {
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.backgroundColor = UIColor.white
+        
+        let rootViewController = PostsViewController()
+        let navigationController = UINavigationController(navigationBarClass:UINavigationBar.self,toolbarClass: nil)
+        navigationController.isNavigationBarHidden = true
+        navigationController.viewControllers = [rootViewController]
+        
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
+    }
 }
 

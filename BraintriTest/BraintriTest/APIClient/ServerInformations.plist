@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>apiKey</key>
+	<string>LqeL7Y6GsNN6NX0UY44JcJQZb7cIVGEnLvvTRMU5JQWbD08CtR</string>
+	<key>baseURL</key>
+	<string>https://api.tumblr.com/v2/</string>
+</dict>
+</plist>
