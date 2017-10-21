@@ -63,6 +63,15 @@ class PostsViewModel: NSObject {
         let post = posts[indexPath.row]
         
         switch post.type {
+        case .quote:
+            var cell = tableView.dequeueReusableCell(withIdentifier: QuoteTableViewCell.reuseIdentifier) as? QuoteTableViewCell
+            if cell == nil {
+                cell = QuoteTableViewCell()
+            }
+            let quotePost = post as! QuotePost
+            cell?.setupData(text: quotePost.text, source: quotePost.source)
+            return cell!
+            
         case .photo:
             var cell = tableView.dequeueReusableCell(withIdentifier: PhotoTableViewCell.reuseIdentifier) as? PhotoTableViewCell
             if cell == nil {
