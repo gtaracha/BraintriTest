@@ -19,7 +19,7 @@ class BaseTableViewCell: UITableViewCell {
     }
     
     func setupContainer() {
-        backgroundColor = UIColor(red: 53.0/255.0, green: 70.0/255.0, blue: 94.0/255.0, alpha: 1.0)
+        backgroundColor = ColorProvider.thumblrBackground
         
         containerView = UIView(forAutoLayout: ())
         containerView?.backgroundColor = UIColor.white

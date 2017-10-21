@@ -19,4 +19,8 @@ class ColorProvider: NSObject {
     class var textColor:UIColor {
         return createColor(red: 68, green: 68, blue: 68, alpha: 1.0)
     }
+    
+    class var thumblrBackground:UIColor {
+        return createColor(red: 53, green: 70, blue: 94, alpha: 1.0)
+    }
 }

@@ -33,7 +33,7 @@ class PostsViewController: BaseViewController {
         tableView.backgroundColor = UIColor.white
         tableView.separatorStyle = .none
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.backgroundColor = UIColor(red: 53.0/255.0, green: 70.0/255.0, blue: 94.0/255.0, alpha: 1.0)
+        tableView.backgroundColor = ColorProvider.thumblrBackground
         view.addSubview(tableView)
     }
     

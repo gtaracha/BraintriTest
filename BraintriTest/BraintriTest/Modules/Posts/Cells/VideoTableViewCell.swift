@@ -8,17 +8,39 @@
 
 import UIKit
 
-class VideoTableViewCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+class VideoTableViewCell: BaseTableViewCell {
+    private var webView:UIWebView!
+    private let kImageHeight:CGFloat = 300
+    
+    // MARK: - Initialization -
+    convenience init() {
+        self.init(style: .default, reuseIdentifier: VideoTableViewCell.reuseIdentifier)
+        setupView()
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    private func setupView() {
+        selectionStyle = .none
+        
+        setupContainer()
+        setupLabels()
+        setupConstraints()
     }
-
+    
+    private func setupLabels() {
+        webView = UIWebView(forAutoLayout: ())
+        containerView?.addSubview(webView)
+    }
+    
+    private func setupConstraints() {
+        webView.autoPinEdgesToSuperviewEdges()
+        webView.autoSetDimension(.height, toSize: kImageHeight)
+        
+        setupContainerConstraints()
+    }
+    
+    func setupData(html:String?) {
+        if let html = html {
+            webView.loadHTMLString(html, baseURL: nil)
+        }
+    }
 }

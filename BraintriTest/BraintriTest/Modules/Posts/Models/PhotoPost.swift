@@ -16,8 +16,32 @@ struct PhotoSize: Decodable {
 
 struct Photo: Decodable {
     let caption:String
-    let alt_sizes:[PhotoSize]
-    let original_size:PhotoSize
+    let altSizes:[PhotoSize]
+    let originalSize:PhotoSize
+    
+    enum CodingKeys: String, CodingKey {
+        case caption
+        case altSizes = "alt_sizes"
+        case originalSize = "original_size"
+    }
+    
+    func getPhotoSizeFor(width:CGFloat) -> PhotoSize {
+        var result:PhotoSize? = nil
+        for photoSize in altSizes {
+            if photoSize.width < Int(width) {
+                if let currentResult = result {
+                    if currentResult.width < photoSize.width {
+                        result = photoSize
+                    }
+                }
+                else {
+                    result = photoSize
+                }
+            }
+        }
+        
+        return result ?? originalSize
+    }
 }
 
 class PhotoPost: Post {

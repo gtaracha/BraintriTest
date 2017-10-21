@@ -75,6 +75,18 @@ class PostsViewModel: NSObject {
         let post = posts[indexPath.row]
         
         switch post.type {
+        case .video:
+            var cell = tableView.dequeueReusableCell(withIdentifier: VideoTableViewCell.reuseIdentifier) as? VideoTableViewCell
+            if cell == nil {
+                cell = VideoTableViewCell()
+            }
+            let videoPost = post as! VideoPost
+            let screenSize = UIScreen.main.bounds.width * 2
+            if let player = videoPost.getPlayerFor(width: screenSize) {
+                cell?.setupData(html: player.embedCode)
+            }
+            return cell!
+            
         case .quote:
             var cell = tableView.dequeueReusableCell(withIdentifier: QuoteTableViewCell.reuseIdentifier) as? QuoteTableViewCell
             if cell == nil {
@@ -90,8 +102,9 @@ class PostsViewModel: NSObject {
                 cell = PhotoTableViewCell()
             }
             let photoPost = post as! PhotoPost
+            let screenSize = UIScreen.main.bounds.width * 2
             let urls = photoPost.photos.map({ photo in
-                return photo.original_size.url
+                return photo.getPhotoSizeFor(width: screenSize).url
             })
             cell?.setupData(urls: urls)
             return cell!
