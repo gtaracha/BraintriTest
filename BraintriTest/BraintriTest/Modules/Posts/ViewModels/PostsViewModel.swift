@@ -11,7 +11,7 @@ import Alamofire
 
 class PostsViewModel: NSObject {
     let kNumberOfSections = 1
-    let kBlogName = "importantcreatorcherryblossom"
+    let kBlogName = "importantcreatorcherryblossom"// this temoporary hardcoded
     
     private var reloadTableViewCallback : (()->())!
     private var posts:[Post] = []
