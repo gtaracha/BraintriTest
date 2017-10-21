@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class BaseRequest: NSObject {
+class BaseRequest<T:Any>: NSObject {
     
     var url:String!
     var bodyParams:[String:Any]! = [:]
@@ -17,7 +17,8 @@ class BaseRequest: NSObject {
     var parametersEncoding:Alamofire.ParameterEncoding! = URLEncoding.default
     
     // Some of the requests has default responseHandlers
-    var successResponseHandler:((DataResponse<Any>) -> Void)?
-    var failureResponseHandler:((DataResponse<Any>?, _ errorCode:APIErrorCode?) -> Void)?
+    var successResponseHandler:((DataResponse<T>) -> Void)?
+    var failureResponseHandler:((DataResponse<T>?, _ errorCode:APIErrorCode?) -> Void)?
     
+    var type = Posts.self
 }

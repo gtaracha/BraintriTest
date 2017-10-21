@@ -8,10 +8,10 @@
 
 import UIKit
 
-class BlogPostsRequest: BaseRequest {
+class BlogPostsRequest: BaseRequest<Posts> {
     
-    convenience init(userName:String) {
+    convenience init(blogName:String) {
         self.init()
-        url = "blog/" + userName + "/posts"
+        url = "blog/" + blogName + "/posts"
     }
 }

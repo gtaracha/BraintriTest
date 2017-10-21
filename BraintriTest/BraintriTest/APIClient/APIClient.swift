@@ -7,6 +7,7 @@
 //
 
 import Alamofire
+import CodableAlamofire
 
 import UIKit
 import Alamofire
@@ -39,32 +40,42 @@ class APIClient: NSObject {
     
     // MARK: - Sending Requests -
     
-    func sendRequest(request:BaseRequest) {
+    func sendRequest<T: Decodable>(request:BaseRequest<T>) {
         guard var fullURL = baseURL else {
             request.failureResponseHandler?(nil, .Unknown)
             return
         }
         
         fullURL.append(request.url)
-        request.bodyParams = ["api_key":apiKey]
+        let queryItems = [URLQueryItem(name: "api_key", value:apiKey)]
+        let urlComps = NSURLComponents(string: fullURL)!
+        urlComps.queryItems = queryItems
+        //fullURL = urlComps.URL!.absoluteString
         
+        //request.bodyParams = ["api_key":apiKey]
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .secondsSince1970
+
        // if checkIfInternetIsAvailable() {
-            Alamofire.request(fullURL, method: request.method, parameters:request.bodyParams, encoding: request.parametersEncoding, headers:nil ).responseJSON { response in
-                if response.result.isSuccess {
+        Alamofire.request(urlComps.url!, method: request.method, parameters:request.bodyParams, encoding: request.parametersEncoding, headers:nil ).responseDecodableObject(keyPath: "response", decoder: decoder) { (response: DataResponse<T>) in
+            if response.result.isSuccess {
+                request.successResponseHandler?(response)
+                
+            } else if response.result.isFailure {
+                
+                if let urlResponse = response.response, 200...299 ~= urlResponse.statusCode {
                     request.successResponseHandler?(response)
-                    
-                } else if response.result.isFailure {
-                    
-                    if let urlResponse = response.response, 200...299 ~= urlResponse.statusCode {
-                        request.successResponseHandler?(response)
-                    } else {
-                        request.failureResponseHandler?(response, nil)
-                    }
+                } else {
+                    request.failureResponseHandler?(response, nil)
                 }
             }
-        //} else {
-        //    request.failureResponseHandler?(nil, .NoInternetConnection)
-        //}
+            //} else {
+            //    request.failureResponseHandler?(nil, .NoInternetConnection)
+            //}
+
+            //print(posts)
+        }
+        
         
     }
     

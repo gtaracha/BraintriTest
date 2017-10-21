@@ -10,31 +10,25 @@ import UIKit
 import Alamofire
 
 class PostsViewModel: NSObject {
-    var posts:Posts!
+    var posts:[Post] = []
     
-    func requestPosts(for userName:String, successCompletionHandler:@escaping (() -> Void), failureCompletionHandler:@escaping ((_ code:APIErrorCode?) -> Void)) {
-        let request = BlogPostsRequest(userName: userName)
+    func requestPosts(blogName:String, successCompletionHandler:@escaping (() -> Void), failureCompletionHandler:@escaping ((_ code:APIErrorCode?) -> Void)) {
+        let request = BlogPostsRequest(blogName: blogName)
         request.successResponseHandler = {
-            (response:DataResponse<Any>?) -> Void in
-            if let responseDict = response?.result.value as? [String : AnyObject] {
-                
-                if let items = responseDict["items"] as? [NSDictionary] {
-                    
-                   
-                    successCompletionHandler()
-                }
-                else {
-                    successCompletionHandler()
-                }
+            (response:DataResponse<Posts>?) -> Void in
+            if let posts = response?.value {
+                self.posts = posts.posts
+                successCompletionHandler()
             }
             else {
                 failureCompletionHandler(nil)
             }
+            
         }
-        
         request.failureResponseHandler = {
             failureCompletionHandler($1)
         }
+        
         APIClient.sharedInstance.sendRequest(request: request)
     }
 }

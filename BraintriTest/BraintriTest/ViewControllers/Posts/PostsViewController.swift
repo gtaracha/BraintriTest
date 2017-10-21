@@ -14,6 +14,11 @@ class PostsViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        viewModel.requestPosts(blogName: "test", successCompletionHandler: {
+            print("success")
+        }) { (error) in
+           print("fail")
+        }
     }
 }

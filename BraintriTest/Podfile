@@ -7,5 +7,6 @@ use_frameworks!
 
 pod 'PureLayout'
 pod 'Alamofire'
+pod 'CodableAlamofire'
 
 end
