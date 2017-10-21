@@ -24,4 +24,8 @@ class LinkPost: Post {
         self.author = try container.decodeIfPresent(String.self, forKey: .author)
         try super.init(from: decoder)
     }
+    
+    override func getTitle() -> String? {
+        return type.rawValue + " " + (title ?? "")
+    }
 }

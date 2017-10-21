@@ -19,7 +19,7 @@ struct Posts: Decodable {
         case type
     }
     
-    enum PostTypes: String, Decodable {
+    enum PostType: String, Decodable {
         case text, quote, link, answer, video, audio, photo, chat
     }
     
@@ -32,7 +32,7 @@ struct Posts: Decodable {
         while(!postsArrayForType.isAtEnd)
         {
             let post = try postsArrayForType.nestedContainer(keyedBy: PostTypeKey.self)
-            let type = try post.decode(PostTypes.self, forKey: PostTypeKey.type)
+            let type = try post.decode(PostType.self, forKey: PostTypeKey.type)
             switch type {
             case .answer:
                 posts.append(try postsArray.decode(AnswerPost.self))

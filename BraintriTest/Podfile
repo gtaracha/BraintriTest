@@ -9,5 +9,6 @@ pod 'PureLayout'
 pod 'Alamofire'
 pod 'CodableAlamofire'
 pod 'ReachabilitySwift'
+pod 'Atributika'
 
 end

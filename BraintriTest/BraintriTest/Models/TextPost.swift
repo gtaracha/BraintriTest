@@ -22,5 +22,9 @@ class TextPost: Post {
         self.body = try container.decode(String.self, forKey: .body)
         try super.init(from: decoder)
     }
+    
+    override func getTitle() -> String? {
+        return (title ?? body)
+    }
 }
 

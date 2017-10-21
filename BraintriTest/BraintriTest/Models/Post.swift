@@ -9,9 +9,13 @@
 import UIKit
 
 class Post: Decodable {
+    enum PostType: String, Decodable {
+        case text, quote, link, answer, video, audio, photo, chat
+    }
+    
     let id: Int
     let postUrl: String
-    let type: String
+    let type: PostType
     let timestamp:TimeInterval
     let tags: [String]?
     
@@ -25,8 +29,12 @@ class Post: Decodable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(Int.self, forKey: .id)
         postUrl = try container.decode(String.self, forKey: .postUrl)
-        type = try container.decode(String.self, forKey: .type)
+        type = try container.decode(PostType.self, forKey: .type)
         timestamp = try container.decode(TimeInterval.self, forKey: .timestamp)
         tags = try container.decodeIfPresent([String].self, forKey: .tags)
+    }
+    
+    func getTitle() -> String? {
+        return type.rawValue + " \(id)"
     }
 }

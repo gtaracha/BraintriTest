@@ -10,6 +10,9 @@ import UIKit
 import Alamofire
 
 class PostsViewModel: NSObject {
+    let kNumberOfSections = 1
+    let kBlogName = "holysheerios"
+    
     private var reloadTableViewCallback : (()->())!
     private var posts:[Post] = []
     
@@ -20,9 +23,9 @@ class PostsViewModel: NSObject {
         retrieveData()
     }
     
-    func retrieveData() {
-        requestPosts(blogName: "test", successCompletionHandler: {
-            
+    private func retrieveData() {
+        requestPosts(blogName: kBlogName, successCompletionHandler: { [weak self] in
+            self?.reloadTableViewCallback()
         }) { (error) in
             
         }
@@ -46,5 +49,25 @@ class PostsViewModel: NSObject {
         }
         
         APIClient.sharedInstance.sendRequest(request: request)
+    }
+    
+    func numberOfRowsInSection(section : Int) -> Int {
+        return posts.count
+    }
+    
+    func numberOfSections() -> Int {
+        return kNumberOfSections
+    }
+    
+    func setUpTableViewCell(indexPath : IndexPath, tableView : UITableView) -> UITableViewCell {
+        let dataObject = posts[indexPath.row]
+        
+        var cell = tableView.dequeueReusableCell(withIdentifier: PostsTableViewCell.reuseIdentifier) as? PostsTableViewCell
+        if cell == nil {
+            cell = PostsTableViewCell()
+        }
+        cell?.setupData(title: dataObject.getTitle())
+        
+        return cell!
     }
 }
