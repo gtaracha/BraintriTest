@@ -10,15 +10,21 @@ import UIKit
 
 class PostsViewController: BaseViewController {
     
-    private var viewModel:PostsViewModel = PostsViewModel()
+    private var viewModel:PostsViewModel!
+    private var tableView:UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel.requestPosts(blogName: "test", successCompletionHandler: {
-            print("success")
-        }) { (error) in
-           print("fail")
-        }
+        setupViews()
+        viewModel = PostsViewModel(reloadTableViewCallback : reloadTableViewData)
+    }
+    
+    func setupViews() {
+        
+    }
+    
+    func reloadTableViewData() {
+        tableView.reloadData()
     }
 }

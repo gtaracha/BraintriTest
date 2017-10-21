@@ -10,9 +10,25 @@ import UIKit
 import Alamofire
 
 class PostsViewModel: NSObject {
-    var posts:[Post] = []
+    private var reloadTableViewCallback : (()->())!
+    private var posts:[Post] = []
     
-    func requestPosts(blogName:String, successCompletionHandler:@escaping (() -> Void), failureCompletionHandler:@escaping ((_ code:APIErrorCode?) -> Void)) {
+    init(reloadTableViewCallback : @escaping (()->())) {
+        super.init()
+        
+        self.reloadTableViewCallback = reloadTableViewCallback
+        retrieveData()
+    }
+    
+    func retrieveData() {
+        requestPosts(blogName: "test", successCompletionHandler: {
+            
+        }) { (error) in
+            
+        }
+    }
+    
+    private func requestPosts(blogName:String, successCompletionHandler:@escaping (() -> Void), failureCompletionHandler:@escaping ((_ code:APIErrorCode?) -> Void)) {
         let request = BlogPostsRequest(blogName: blogName)
         request.successResponseHandler = {
             (response:DataResponse<Posts>?) -> Void in

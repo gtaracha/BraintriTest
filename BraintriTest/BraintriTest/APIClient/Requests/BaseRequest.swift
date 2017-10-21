@@ -14,11 +14,9 @@ class BaseRequest<T:Any>: NSObject {
     var url:String!
     var bodyParams:[String:Any]! = [:]
     var method:HTTPMethod! = .get
-    var parametersEncoding:Alamofire.ParameterEncoding! = URLEncoding.default
+    var parametersEncoding:Alamofire.ParameterEncoding! = URLEncoding.queryString
+    var keyPath:String?
     
-    // Some of the requests has default responseHandlers
     var successResponseHandler:((DataResponse<T>) -> Void)?
     var failureResponseHandler:((DataResponse<T>?, _ errorCode:APIErrorCode?) -> Void)?
-    
-    var type = Posts.self
 }

@@ -13,5 +13,6 @@ class BlogPostsRequest: BaseRequest<Posts> {
     convenience init(blogName:String) {
         self.init()
         url = "blog/" + blogName + "/posts"
+        keyPath = "response"
     }
 }
