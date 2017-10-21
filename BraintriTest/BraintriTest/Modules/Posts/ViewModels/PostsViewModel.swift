@@ -11,7 +11,7 @@ import Alamofire
 
 class PostsViewModel: NSObject {
     let kNumberOfSections = 1
-    let kBlogName = "holysheerios"
+    let kBlogName = "importantcreatorcherryblossom"
     
     private var reloadTableViewCallback : (()->())!
     private var posts:[Post] = []
@@ -60,14 +60,34 @@ class PostsViewModel: NSObject {
     }
     
     func setUpTableViewCell(indexPath : IndexPath, tableView : UITableView) -> UITableViewCell {
-        let dataObject = posts[indexPath.row]
+        let post = posts[indexPath.row]
         
-        var cell = tableView.dequeueReusableCell(withIdentifier: PostsTableViewCell.reuseIdentifier) as? PostsTableViewCell
-        if cell == nil {
-            cell = PostsTableViewCell()
+        switch post.type {
+        case .photo:
+            var cell = tableView.dequeueReusableCell(withIdentifier: PhotoTableViewCell.reuseIdentifier) as? PhotoTableViewCell
+            if cell == nil {
+                cell = PhotoTableViewCell()
+            }
+            let photoPost = post as! PhotoPost
+            cell?.setupData(url: photoPost.photos[0].original_size.url)
+            return cell!
+            
+        case .text:
+            var cell = tableView.dequeueReusableCell(withIdentifier: TextTableViewCell.reuseIdentifier) as? TextTableViewCell
+            if cell == nil {
+                cell = TextTableViewCell()
+            }
+            let textPost = post as! TextPost
+            cell?.setupData(title: textPost.title, body: textPost.body)
+            return cell!
+            
+        default:
+            var cell = tableView.dequeueReusableCell(withIdentifier: DefaultTableViewCell.reuseIdentifier) as? DefaultTableViewCell
+            if cell == nil {
+                cell = DefaultTableViewCell()
+            }
+            cell?.setupData(title: post.getTitle())
+            return cell!
         }
-        cell?.setupData(title: dataObject.getTitle())
-        
-        return cell!
     }
 }

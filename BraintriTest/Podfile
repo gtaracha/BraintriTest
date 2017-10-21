@@ -10,5 +10,6 @@ pod 'Alamofire'
 pod 'CodableAlamofire'
 pod 'ReachabilitySwift'
 pod 'Atributika'
+pod 'SDWebImage'
 
 end

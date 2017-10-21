@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		C00538F81F9B4B61006D5A0B /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00538F71F9B4B61006D5A0B /* BaseTableViewCell.swift */; };
 		C00538FA1F9B4B97006D5A0B /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00538F91F9B4B97006D5A0B /* BaseViewController.swift */; };
-		C00538FC1F9B4BDF006D5A0B /* PostsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00538FB1F9B4BDF006D5A0B /* PostsTableViewCell.swift */; };
 		C00538FE1F9B4C8D006D5A0B /* PostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00538FD1F9B4C8D006D5A0B /* PostsViewModel.swift */; };
 		C00539001F9B4CC0006D5A0B /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00538FF1F9B4CC0006D5A0B /* PostsViewController.swift */; };
 		C00539021F9B4D1F006D5A0B /* AnswerPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00539011F9B4D1F006D5A0B /* AnswerPost.swift */; };
@@ -22,6 +21,13 @@
 		C00539101F9B4D78006D5A0B /* QuotePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = C005390F1F9B4D78006D5A0B /* QuotePost.swift */; };
 		C00539121F9B4D89006D5A0B /* TextPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00539111F9B4D89006D5A0B /* TextPost.swift */; };
 		C00539141F9B4D95006D5A0B /* VideoPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00539131F9B4D95006D5A0B /* VideoPost.swift */; };
+		C00539161F9B4F56006D5A0B /* TextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00539151F9B4F56006D5A0B /* TextTableViewCell.swift */; };
+		C00539181F9B4F75006D5A0B /* QuoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00539171F9B4F75006D5A0B /* QuoteTableViewCell.swift */; };
+		C005391A1F9B4F92006D5A0B /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00539191F9B4F92006D5A0B /* PhotoTableViewCell.swift */; };
+		C005391C1F9B4F9E006D5A0B /* VideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C005391B1F9B4F9E006D5A0B /* VideoTableViewCell.swift */; };
+		C005391E1F9B50B4006D5A0B /* DefaultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C005391D1F9B50B4006D5A0B /* DefaultTableViewCell.swift */; };
+		C00539231F9B669E006D5A0B /* ColorProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00539221F9B669E006D5A0B /* ColorProvider.swift */; };
+		C00539251F9B67DF006D5A0B /* StyleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00539241F9B67DF006D5A0B /* StyleProvider.swift */; };
 		C01D29D41F99421A00A3E6CD /* BaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01D29D31F99421A00A3E6CD /* BaseRequest.swift */; };
 		C01D29D81F99481200A3E6CD /* ServerInformations.plist in Resources */ = {isa = PBXBuildFile; fileRef = C01D29D71F99481200A3E6CD /* ServerInformations.plist */; };
 		C01D29DA1F99482E00A3E6CD /* APIErrorCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01D29D91F99482E00A3E6CD /* APIErrorCodes.swift */; };
@@ -50,7 +56,6 @@
 		91BD84A104808D91769724E4 /* Pods-BraintriTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BraintriTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-BraintriTest/Pods-BraintriTest.release.xcconfig"; sourceTree = "<group>"; };
 		C00538F71F9B4B61006D5A0B /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		C00538F91F9B4B97006D5A0B /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		C00538FB1F9B4BDF006D5A0B /* PostsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsTableViewCell.swift; sourceTree = "<group>"; };
 		C00538FD1F9B4C8D006D5A0B /* PostsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewModel.swift; sourceTree = "<group>"; };
 		C00538FF1F9B4CC0006D5A0B /* PostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
 		C00539011F9B4D1F006D5A0B /* AnswerPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerPost.swift; sourceTree = "<group>"; };
@@ -63,6 +68,13 @@
 		C005390F1F9B4D78006D5A0B /* QuotePost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotePost.swift; sourceTree = "<group>"; };
 		C00539111F9B4D89006D5A0B /* TextPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPost.swift; sourceTree = "<group>"; };
 		C00539131F9B4D95006D5A0B /* VideoPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPost.swift; sourceTree = "<group>"; };
+		C00539151F9B4F56006D5A0B /* TextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTableViewCell.swift; sourceTree = "<group>"; };
+		C00539171F9B4F75006D5A0B /* QuoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteTableViewCell.swift; sourceTree = "<group>"; };
+		C00539191F9B4F92006D5A0B /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
+		C005391B1F9B4F9E006D5A0B /* VideoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTableViewCell.swift; sourceTree = "<group>"; };
+		C005391D1F9B50B4006D5A0B /* DefaultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTableViewCell.swift; sourceTree = "<group>"; };
+		C00539221F9B669E006D5A0B /* ColorProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorProvider.swift; sourceTree = "<group>"; };
+		C00539241F9B67DF006D5A0B /* StyleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleProvider.swift; sourceTree = "<group>"; };
 		C01D29D31F99421A00A3E6CD /* BaseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequest.swift; sourceTree = "<group>"; };
 		C01D29D71F99481200A3E6CD /* ServerInformations.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ServerInformations.plist; sourceTree = "<group>"; };
 		C01D29D91F99482E00A3E6CD /* APIErrorCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIErrorCodes.swift; sourceTree = "<group>"; };
@@ -181,7 +193,11 @@
 		C00538D41F9B4654006D5A0B /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				C00538FB1F9B4BDF006D5A0B /* PostsTableViewCell.swift */,
+				C00539151F9B4F56006D5A0B /* TextTableViewCell.swift */,
+				C00539171F9B4F75006D5A0B /* QuoteTableViewCell.swift */,
+				C00539191F9B4F92006D5A0B /* PhotoTableViewCell.swift */,
+				C005391B1F9B4F9E006D5A0B /* VideoTableViewCell.swift */,
+				C005391D1F9B50B4006D5A0B /* DefaultTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -200,6 +216,15 @@
 				C00538F71F9B4B61006D5A0B /* BaseTableViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		C00539211F9B6682006D5A0B /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				C00539221F9B669E006D5A0B /* ColorProvider.swift */,
+				C00539241F9B67DF006D5A0B /* StyleProvider.swift */,
+			);
+			path = Style;
 			sourceTree = "<group>";
 		};
 		C01D29D21F99420000A3E6CD /* Requests */ = {
@@ -235,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				C0F9885F1F98C7B50045B87E /* APIClient */,
+				C00539211F9B6682006D5A0B /* Style */,
 				C0F988601F98C7BF0045B87E /* Helpers */,
 				C00538CE1F9B45CE006D5A0B /* Modules */,
 				C0F9885E1F98C77C0045B87E /* Supporting Files */,
@@ -395,6 +421,7 @@
 				"${BUILT_PRODUCTS_DIR}/CodableAlamofire/CodableAlamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/PureLayout/PureLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -403,6 +430,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CodableAlamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PureLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -449,13 +477,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C00539231F9B669E006D5A0B /* ColorProvider.swift in Sources */,
 				C0F9883F1F98C75C0045B87E /* AppDelegate.swift in Sources */,
+				C00539251F9B67DF006D5A0B /* StyleProvider.swift in Sources */,
 				C01D29DC1F9950C000A3E6CD /* BlogPostsRequest.swift in Sources */,
 				C00539141F9B4D95006D5A0B /* VideoPost.swift in Sources */,
 				C0F988671F98CA040045B87E /* APIClient.swift in Sources */,
+				C005391C1F9B4F9E006D5A0B /* VideoTableViewCell.swift in Sources */,
+				C00539161F9B4F56006D5A0B /* TextTableViewCell.swift in Sources */,
 				C01D2A011F9B393700A3E6CD /* Extensions.swift in Sources */,
 				C005390C1F9B4D5C006D5A0B /* Post.swift in Sources */,
 				C00539041F9B4D2B006D5A0B /* AudioPost.swift in Sources */,
+				C005391A1F9B4F92006D5A0B /* PhotoTableViewCell.swift in Sources */,
 				C00538F81F9B4B61006D5A0B /* BaseTableViewCell.swift in Sources */,
 				C005390E1F9B4D6B006D5A0B /* Posts.swift in Sources */,
 				C00539021F9B4D1F006D5A0B /* AnswerPost.swift in Sources */,
@@ -464,7 +497,8 @@
 				C00538FE1F9B4C8D006D5A0B /* PostsViewModel.swift in Sources */,
 				C00539121F9B4D89006D5A0B /* TextPost.swift in Sources */,
 				C005390A1F9B4D4F006D5A0B /* PhotoPost.swift in Sources */,
-				C00538FC1F9B4BDF006D5A0B /* PostsTableViewCell.swift in Sources */,
+				C005391E1F9B50B4006D5A0B /* DefaultTableViewCell.swift in Sources */,
+				C00539181F9B4F75006D5A0B /* QuoteTableViewCell.swift in Sources */,
 				C00539101F9B4D78006D5A0B /* QuotePost.swift in Sources */,
 				C00539061F9B4D38006D5A0B /* ChatPost.swift in Sources */,
 				C00539081F9B4D43006D5A0B /* LinkPost.swift in Sources */,

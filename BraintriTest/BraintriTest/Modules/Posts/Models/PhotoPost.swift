@@ -8,17 +8,37 @@
 
 import UIKit
 
+struct PhotoSize: Decodable {
+    let url: String
+    let width: Int
+    let height: Int
+}
+
+struct Photo: Decodable {
+    let caption:String
+    let alt_sizes:[PhotoSize]
+    let original_size:PhotoSize
+    
+    enum PhotoKey: String, CodingKey {
+        case caption
+        case alt_sizes = "alt_sizes"
+        case original_size = "original_size"
+    }
+}
+
 class PhotoPost: Post {
+    let photos: [Photo]
     let caption: String?
     let width: Int?
     let height: Int?
     
     enum CodingKeys: String, CodingKey {
-        case caption, width, height
+        case photos, caption, width, height
     }
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.photos = try container.decode([Photo].self, forKey: .photos)
         self.caption = try container.decodeIfPresent(String.self, forKey: .caption)
         self.width = try container.decodeIfPresent(Int.self, forKey: .width)
         self.height = try container.decodeIfPresent(Int.self, forKey: .height)
