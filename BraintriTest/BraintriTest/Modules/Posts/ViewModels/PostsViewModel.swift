@@ -10,8 +10,10 @@ import UIKit
 import Alamofire
 
 class PostsViewModel: NSObject {
+    let kServerInformationFileName = "ServerInformations"
     let kNumberOfSections = 1
-    let kBlogName = "importantcreatorcherryblossom"// this temoporary hardcoded
+    
+    var blogName:String!
     
     private var reloadTableViewCallback : (()->())!
     private var posts:[Post] = []
@@ -20,11 +22,21 @@ class PostsViewModel: NSObject {
         super.init()
         
         self.reloadTableViewCallback = reloadTableViewCallback
+        
+        loadBlogName()
         retrieveData()
     }
     
+    func loadBlogName() {//temp
+        if let path = Bundle.main.path(forResource: kServerInformationFileName, ofType: "plist") {
+            if let serverData = NSDictionary(contentsOfFile: path) as? [String : AnyObject] {
+                blogName = serverData["blogName"] as! String
+            }
+        }
+    }
+    
     private func retrieveData() {
-        requestPosts(blogName: kBlogName, successCompletionHandler: { [weak self] in
+        requestPosts(blogName: blogName, successCompletionHandler: { [weak self] in
             self?.reloadTableViewCallback()
         }) { (error) in
             
@@ -78,7 +90,10 @@ class PostsViewModel: NSObject {
                 cell = PhotoTableViewCell()
             }
             let photoPost = post as! PhotoPost
-            cell?.setupData(url: photoPost.photos[0].original_size.url)
+            let urls = photoPost.photos.map({ photo in
+                return photo.original_size.url
+            })
+            cell?.setupData(urls: urls)
             return cell!
             
         case .text:

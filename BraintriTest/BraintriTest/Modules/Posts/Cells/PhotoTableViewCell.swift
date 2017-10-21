@@ -13,7 +13,7 @@ class PhotoTableViewCell: BaseTableViewCell {
     private let kImageHeight:CGFloat = 300
     private let kVerticalSpace:CGFloat = 10
     
-    private var photoImageView: UIImageView!//only one at that point
+    private var photoImageView:[UIImageView] = []
 
     // MARK: - Initialization -
     convenience init() {
@@ -25,29 +25,43 @@ class PhotoTableViewCell: BaseTableViewCell {
         selectionStyle = .none
         
         setupContainer()
-        setupImageView()
         setupConstraints()
     }
     
-    private func setupImageView() {
-        photoImageView = UIImageView(forAutoLayout: ())
-        photoImageView.contentMode = .scaleAspectFill
-        containerView?.addSubview(photoImageView)
-    }
-    
     private func setupConstraints() {
-        photoImageView.autoPinEdge(toSuperviewEdge: .top, withInset: kVerticalSpace)
-        photoImageView.autoPinEdge(toSuperviewEdge: .left)
-        photoImageView.autoPinEdge(toSuperviewEdge: .right)
-        photoImageView.autoPinEdge(toSuperviewEdge: .bottom, withInset: kVerticalSpace)
-        photoImageView.autoSetDimension(.height, toSize: kImageHeight)
-        
         setupContainerConstraints()
     }
     
-    func setupData(url:String?) {
-        if let url = url {
-            photoImageView.sd_setImage(with: URL(string: url))
+    func setupData(urls:[String?]) {
+        for imageView in photoImageView {
+            imageView.removeFromSuperview()
+        }
+        photoImageView.removeAll()
+        
+        var lastView:UIView? = nil
+        for (index, url) in urls.enumerated() {
+            if let url = url {
+                let photoImageView = UIImageView(forAutoLayout: ())
+                photoImageView.contentMode = .scaleAspectFill
+                containerView?.addSubview(photoImageView)
+                
+                if index == 0 {
+                    photoImageView.autoPinEdge(toSuperviewEdge: .top, withInset: kVerticalSpace)
+                }
+                else {
+                    photoImageView.autoPinEdge(.top, to: .bottom, of: lastView!)
+                }
+                photoImageView.autoPinEdge(toSuperviewEdge: .left)
+                photoImageView.autoPinEdge(toSuperviewEdge: .right)
+                photoImageView.autoSetDimension(.height, toSize: kImageHeight)
+                if urls.count - 1 == index {
+                    photoImageView.autoPinEdge(toSuperviewEdge: .bottom, withInset: kVerticalSpace)
+                }
+                
+                photoImageView.sd_setImage(with: URL(string: url))
+                lastView = photoImageView
+                
+            }
         }
     }
 }

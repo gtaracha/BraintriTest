@@ -18,12 +18,6 @@ struct Photo: Decodable {
     let caption:String
     let alt_sizes:[PhotoSize]
     let original_size:PhotoSize
-    
-    enum PhotoKey: String, CodingKey {
-        case caption
-        case alt_sizes = "alt_sizes"
-        case original_size = "original_size"
-    }
 }
 
 class PhotoPost: Post {
